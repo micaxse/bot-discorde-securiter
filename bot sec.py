@@ -15,8 +15,8 @@ from keep_alive import keep_alive
 # Config & logging
 # ==========================
 load_dotenv()
-TOKEN = os.getenv("DISCORD_TOKEN")
-if not TOKEN:
+DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
+if not DISCORD_TOKEN:
     raise SystemExit("❌ DISCORD_TOKEN introuvable dans .env")
 
 logging.basicConfig(
@@ -314,7 +314,8 @@ async def on_error(event_method, *args, **kwargs):
 # Lancement
 # ==========================
 if __name__ == "__main__":
-    print("✅ Token OK (longueur):", len(TOKEN))
+    print("✅ Token OK (longueur):", len(DISCORD_TOKEN))
     print("✅ discord.py =", discord.__version__)
     keep_alive()          # lance Flask en thread
-    bot.run(TOKEN)        # lance le bot (une seule fois)
+    bot.run(DISCORD_TOKEN)        # lance le bot (une seule fois)
+
